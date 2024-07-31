@@ -38,7 +38,7 @@ export const menuItems = {
             {
                 icon: IconUserFilled,
                 text: "Mi Perfil",
-                link: "perfil",
+                link: PrivateRoutes.PROFILE,
             },
         ],
         dropdown: {
