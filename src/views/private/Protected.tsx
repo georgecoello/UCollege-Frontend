@@ -5,13 +5,14 @@ import { lazy, Suspense } from "react";
 import { Route } from "react-router-dom";
 import RoleGuard from "../../guards/RoleGuard";
 import { RoleEnum } from "@/types/auth";
+const EditTeacherView = lazy(() =>  import('./admin/EditTeacherView'))
+const AddTeacherView = lazy(() => import("./admin/AddTeacherView"));
+const TeacherView = lazy(() => import("./admin/TeacherView"));
 const HomeStudent = lazy(() => import("./student/HomeStudent"));
 const AppLayout = lazy(() => import("@/layouts/App/AppLayout"));
 const Chat = lazy(() => import("./Chat"));
 const AdminAdmission = lazy(() => import("./admin/AdminAdmission"));
-const Teacher = lazy(() => import("../../views/teacher/teacherView"));
-const AddTeacherForm = lazy(() => import("@/views/teacher/AddTeacherView"));
-const EditTeacher = lazy(() => import ("@/views/teacher/EditTeacherView"))
+const Profile = lazy(()=> import ("./ProfileView"))
 
 export default function Protected() {
   return (
@@ -40,6 +41,14 @@ export default function Protected() {
             </Suspense>
           }
         />
+        <Route
+          path={PrivateRoutes.PROFILE}
+          element={
+            <Suspense fallback={<SpinnerFull />}>
+              <Profile />
+            </Suspense>
+          }
+          />
         <Route element={<RoleGuard role={RoleEnum.ADMIN} />}>
           <Route
             path={PrivateRoutes.ADMIN_ADMISIONES}
@@ -50,26 +59,26 @@ export default function Protected() {
             }
           />
           <Route
-            path={PrivateRoutes.TEACHER}
+            path={PrivateRoutes.ADMIN_DOCENTES}
             element={
               <Suspense fallback={<SpinnerFull />}>
-                <Teacher />
+                <TeacherView />
               </Suspense>
             }
           />
           <Route
-            path={PrivateRoutes.ADD_TEACHER}
+            path={PrivateRoutes.ADMIN_ADD_TEACHER}
             element={
               <Suspense fallback={<SpinnerFull />}>
-                <AddTeacherForm />
+                <AddTeacherView />
               </Suspense>
             }
           />
           <Route
-            path={PrivateRoutes.EDIT_TEACHER}
+            path={PrivateRoutes.ADMIN_EDIT_TEACHER}
             element={
               <Suspense fallback={<SpinnerFull />}>
-                <EditTeacher />
+                <EditTeacherView />
               </Suspense>
             }
           />

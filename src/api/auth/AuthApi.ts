@@ -1,6 +1,5 @@
 import api from "@/lib/axios";
 import { ForgotPasswordData, loginUserSchema, NewPasswordFormData, optionsCareerStudentSchema, UserData, UserLoginForm, userSchema } from "@/types/auth";
-import { Teacher} from "@/types/teacher";
 import { isAxiosError } from "axios";
 
 
