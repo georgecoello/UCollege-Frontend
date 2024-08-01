@@ -6,19 +6,35 @@ import GetStudentsAdmitteds from "@/components/admin/GetStudentsAdmitteds";
 
 export default function AdminAdmission() {
   return (
-    <div className=" p-4 flex items-center mt-10 h-full">
-      <div className="  bg-secondary mx-auto shadow-md p-5 h-full lg:px-20  space-y-8 rounded-md w-full lg:w-4/5">
-        <h1 className=" text-xl sm:text-3xl font-semibold text-white text-center mb-6">
-          Admisiones
-        </h1>
-        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <GetNotesSection />
-          <UploadNotesSection />
-          <SendEmailSection />
-          <GetStudentsAdmitteds />
-        </div>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6"> 
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-4xl">
+        <header className="bg-gradient-to-r from-blue-500 to-teal-500 p-6 text-white text-center">
+          <h1 className="text-2xl font-bold">Admisiones</h1>
+        </header>
+        <main className="p-6 space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div className="space-y-6">
+              <UploadNotesSection />
+              <SendEmailSection />
+            </div>
+            <div className="space-y-20">
+              <GetNotesSection />
+              <GetStudentsAdmitteds />
+            </div>
+          </div>
+        </main>
       </div>
-      <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
+      <ToastContainer 
+        position="bottom-right" 
+        autoClose={3000} 
+        hideProgressBar 
+        newestOnTop 
+        closeOnClick 
+        rtl={false} 
+        pauseOnFocusLoss 
+        draggable 
+        pauseOnHover 
+      />
     </div>
   );
 }
